@@ -70,7 +70,7 @@ newsletterForm?.addEventListener('submit', async (e) => {
     
     // Submit to Formspree (replace YOUR-FORM-ID with your actual Formspree ID)
     try {
-        const response = await fetch('https://formspree.io/f/YOUR-FORM-ID', {
+        const response = await fetch('https://formspree.io/f/xgvrvqne', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -117,7 +117,7 @@ contactForm?.addEventListener('submit', async (e) => {
     
     // Submit to Formspree (replace YOUR-FORM-ID with your actual Formspree ID)
     try {
-        const response = await fetch('https://formspree.io/f/YOUR-FORM-ID', {
+        const response = await fetch('https://formspree.io/f/xkgkgeqo', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
