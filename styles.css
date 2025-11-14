@@ -105,13 +105,18 @@ p {
     transition: transform var(--transition-speed);
 }
 
-.logo-link:hover {
-    transform: scale(1.05);
+.logo-link:hover .logo-image {
+  transform: scale(1.05);
 }
 
-.sun-icon {
-    font-size: 1.5rem;
-    animation: rotateSun 20s linear infinite;
+.logo-image {
+  transition: transform var(--transition-speed);
+}
+
+.logo-image {
+  height: 32px;        /* adjust to your liking */
+  width: auto;
+  display: block;
 }
 
 @keyframes rotateSun {
