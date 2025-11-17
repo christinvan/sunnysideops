@@ -394,10 +394,14 @@ p {
 }
 
 .services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    display: flex;
     gap: 2rem;
+    overflow-x: auto;
+    padding-bottom: 1rem;              /* space so scrollbar isn't tight to cards */
+    scroll-snap-type: x mandatory;     /* nice snapping effect */
+    -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
 }
+
 
 .service-card {
     background: var(--light-gray);
@@ -406,7 +410,11 @@ p {
     transition: all var(--transition-speed);
     position: relative;
     overflow: hidden;
+
+    flex: 0 0 280px;        /* card width; tweak 260–320px if you want */
+    scroll-snap-align: start;
 }
+
 
 .service-card::before {
     content: '';
@@ -465,6 +473,16 @@ p {
     position: absolute;
     left: 0;
 }
+
+.services-grid::-webkit-scrollbar {
+    display: none;
+}
+
+.services-grid {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
 
 /* Case Studies */
 .case-studies {
