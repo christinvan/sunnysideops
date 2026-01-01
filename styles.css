@@ -181,7 +181,7 @@ p {
 
 /* Hero Section */
 .hero {
-    padding: 120px 0 80px;
+    padding: 120px 0 40px;  /* Changed from 80px to 40px */
     background: linear-gradient(135deg, rgba(254, 188, 89, 0.1) 0%, rgba(54, 101, 96, 0.05) 100%);
     min-height: 100vh;
     display: flex;
