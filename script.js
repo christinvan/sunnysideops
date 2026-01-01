@@ -98,7 +98,12 @@ newsletterForm?.addEventListener('submit', async (e) => {
             e.target.reset();
             successMessage.remove();
         }, 5000);
-    }, 1500);
+        }
+    } catch (error) {
+        console.error('Newsletter error:', error);
+        button.textContent = originalText;
+        button.classList.remove('loading');
+    }
 });
 
 // Contact Form Handling
