@@ -1,7 +1,7 @@
 /* CSS Reset and Base Styles */
 * {
     margin: 0;
-    padding: 1;
+    padding: 0;  /* FIXED: was padding: 1 */
     box-sizing: border-box;
 }
 
@@ -106,17 +106,14 @@ p {
 }
 
 .logo-link:hover .logo-image {
-  transform: scale(1.05);
+    transform: scale(1.05);
 }
 
 .logo-image {
-  transition: transform var(--transition-speed);
-}
-
-.logo-image {
-  height: 70px;        /* adjust to your liking */
-  width: auto;
-  display: block;
+    height: 70px;
+    width: auto;
+    display: block;
+    transition: transform var(--transition-speed);
 }
 
 @keyframes rotateSun {
@@ -181,7 +178,7 @@ p {
 
 /* Hero Section */
 .hero {
-    padding: 120px 0 40px;  /* Changed from 80px to 40px */
+    padding: 120px 0 40px;
     background: linear-gradient(135deg, rgba(254, 188, 89, 0.1) 0%, rgba(54, 101, 96, 0.05) 100%);
     min-height: 100vh;
     display: flex;
@@ -397,11 +394,10 @@ p {
     display: flex;
     gap: 2rem;
     overflow-x: auto;
-    padding-bottom: 1rem;              /* space so scrollbar isn't tight to cards */
-    scroll-snap-type: x mandatory;     /* nice snapping effect */
-    -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
+    padding-bottom: 1rem;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
 }
-
 
 .service-card {
     background: var(--light-gray);
@@ -410,11 +406,9 @@ p {
     transition: all var(--transition-speed);
     position: relative;
     overflow: hidden;
-
-    flex: 0 0 280px;        /* card width; tweak 260–320px if you want */
+    flex: 0 0 280px;
     scroll-snap-align: start;
 }
-
 
 .service-card::before {
     content: '';
@@ -485,139 +479,37 @@ p {
 
 /* Scroll Arrow Controls */
 .scroll-controls {
-  display: none; /* Hidden by default, show only when scrollable */
-  justify-content: center;
-  gap: 1rem;
-  margin-bottom: 2rem;
+    display: none;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
 }
 
 .scroll-controls.show {
-  display: flex;
+    display: flex;
 }
 
 .scroll-arrow {
-  background: var(--primary-gold);
-  color: white;
-  border: none;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  font-size: 1.5rem;
-  cursor: pointer;
-  transition: all var(--transition-speed);
-  box-shadow: 0 4px 10px var(--shadow-light);
+    background: var(--primary-gold);
+    color: white;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all var(--transition-speed);
+    box-shadow: 0 4px 10px var(--shadow-light);
 }
 
 .scroll-arrow:hover {
-  background: var(--primary-teal);
-  transform: scale(1.1);
+    background: var(--primary-teal);
+    transform: scale(1.1);
 }
 
 .scroll-arrow:disabled {
-  opacity: 0.3;
-  cursor: not-allowed;
-}
-
-/* Case Studies */
-.case-studies {
-    padding: 80px 0;
-    background: linear-gradient(135deg, rgba(54, 101, 96, 0.05) 0%, rgba(254, 188, 89, 0.05) 100%);
-}
-
-.case-grid {
-    display: grid;
-    gap: 2rem;
-}
-
-.case-card {
-    background: var(--white);
-    border-radius: 20px;
-    padding: 2rem;
-    box-shadow: 0 5px 15px var(--shadow-light);
-    transition: all var(--transition-speed);
-}
-
-.case-card:hover {
-    transform: scale(1.02);
-    box-shadow: 0 10px 30px var(--shadow-medium);
-}
-
-.case-header {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 0.5rem;
-}
-
-.case-industry {
-    background: var(--primary-gold);
-    color: var(--white);
-    padding: 0.25rem 0.75rem;
-    border-radius: 20px;
-    font-size: 0.875rem;
-    font-weight: 600;
-}
-
-.case-client {
-    color: var(--dark-gray);
-    font-style: italic;
-    margin-bottom: 1.5rem;
-}
-
-.case-challenge,
-.case-solution {
-    margin-bottom: 1.5rem;
-}
-
-.case-challenge h4,
-.case-solution h4 {
-    color: var(--primary-teal);
-    margin-bottom: 0.5rem;
-    font-size: 1.125rem;
-}
-
-.case-results {
-    display: flex;
-    gap: 1rem;
-    margin: 1.5rem 0;
-}
-
-.result-box {
-    flex: 1;
-    padding: 1rem;
-    border-radius: 10px;
-    text-align: center;
-    transition: all var(--transition-speed);
-}
-
-.result-box:first-child {
-    background: rgba(239, 68, 68, 0.1);
-}
-
-.result-box:last-child {
-    background: rgba(34, 197, 94, 0.1);
-}
-
-.result-label {
-    display: block;
-    font-size: 0.875rem;
-    color: var(--dark-gray);
-    margin-bottom: 0.5rem;
-}
-
-.result-value {
-    display: block;
-    font-weight: 700;
-    color: var(--primary-teal);
-    font-size: 1.125rem;
-}
-
-.case-quote {
-    border-left: 4px solid var(--primary-gold);
-    padding-left: 1.5rem;
-    font-style: italic;
-    color: var(--text-dark);
-    margin-top: 1.5rem;
+    opacity: 0.3;
+    cursor: not-allowed;
 }
 
 /* Products Section */
@@ -722,68 +614,6 @@ p {
 .newsletter-form input:focus {
     outline: none;
     background: rgba(255, 255, 255, 0.1);
-}
-
-/* Blog Section */
-.blog {
-    padding: 80px 0;
-    background: var(--light-gray);
-}
-
-.blog-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    margin-bottom: 3rem;
-}
-
-.blog-card {
-    background: var(--white);
-    border-radius: 20px;
-    padding: 2rem;
-    transition: all var(--transition-speed);
-    position: relative;
-    overflow: hidden;
-}
-
-.blog-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px var(--shadow-medium);
-}
-
-.blog-date {
-    color: var(--primary-gold);
-    font-weight: 600;
-    font-size: 0.875rem;
-    margin-bottom: 0.5rem;
-}
-
-.blog-card h3 {
-    color: var(--primary-teal);
-    margin-bottom: 1rem;
-}
-
-.blog-link {
-    color: var(--primary-teal);
-    text-decoration: none;
-    font-weight: 600;
-    display: inline-flex;
-    align-items: center;
-    transition: all var(--transition-speed);
-}
-
-.blog-link:hover {
-    color: var(--primary-gold);
-    transform: translateX(5px);
-}
-
-.blog-cta {
-    text-align: center;
-}
-
-.blog-cta p {
-    font-size: 1.125rem;
-    margin-bottom: 1rem;
 }
 
 /* About & Contact Section */
@@ -981,10 +811,6 @@ p {
     
     .newsletter-form input {
         width: 100%;
-    }
-    
-    .case-results {
-        flex-direction: column;
     }
 }
 
