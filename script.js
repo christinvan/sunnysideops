@@ -68,7 +68,6 @@ newsletterForm?.addEventListener('submit', async (e) => {
     button.textContent = 'Subscribing...';
     button.classList.add('loading');
     
-    // Submit to Formspree (replace YOUR-FORM-ID with your actual Formspree ID)
     try {
         const response = await fetch('https://formspree.io/f/xgvrvqne', {
             method: 'POST',
@@ -83,21 +82,21 @@ newsletterForm?.addEventListener('submit', async (e) => {
             button.classList.remove('loading');
             button.style.background = '#22c55e';
         
-        // Show success message
-        const successMessage = document.createElement('p');
-        successMessage.textContent = 'Welcome to the Sunnyside family! Check your inbox for a confirmation email.';
-        successMessage.style.color = 'var(--white)';
-        successMessage.style.marginTop = '1rem';
-        successMessage.style.animation = 'slideUp 0.5s ease-out';
-        e.target.appendChild(successMessage);
-        
-        // Reset after delay
-        setTimeout(() => {
-            button.textContent = originalText;
-            button.style.background = '';
-            e.target.reset();
-            successMessage.remove();
-        }, 5000);
+            // Show success message
+            const successMessage = document.createElement('p');
+            successMessage.textContent = 'Welcome to the Sunnyside family! Check your inbox for a confirmation email.';
+            successMessage.style.color = 'var(--white)';
+            successMessage.style.marginTop = '1rem';
+            successMessage.style.animation = 'slideUp 0.5s ease-out';
+            e.target.appendChild(successMessage);
+            
+            // Reset after delay
+            setTimeout(() => {
+                button.textContent = originalText;
+                button.style.background = '';
+                e.target.reset();
+                successMessage.remove();
+            }, 5000);
         }
     } catch (error) {
         console.error('Newsletter error:', error);
@@ -120,7 +119,6 @@ contactForm?.addEventListener('submit', async (e) => {
     button.innerHTML = 'Sending your message... ☀️';
     button.classList.add('loading');
     
-    // Submit to Formspree (replace YOUR-FORM-ID with your actual Formspree ID)
     try {
         const response = await fetch('https://formspree.io/f/xkgkgeqo', {
             method: 'POST',
@@ -135,31 +133,36 @@ contactForm?.addEventListener('submit', async (e) => {
             button.classList.remove('loading');
             button.style.background = '#22c55e';
         
-        // Show success message
-        const successDiv = document.createElement('div');
-        successDiv.className = 'form-success';
-        successDiv.innerHTML = `
-            <h3>Thanks for reaching out, ${data.name}! 🎉</h3>
-            <p>I'll get back to you within 24 hours. Looking forward to helping you bring more sunshine to your operations!</p>
-        `;
-        successDiv.style.cssText = `
-            background: var(--primary-gold);
-            color: var(--white);
-            padding: 1.5rem;
-            border-radius: 15px;
-            margin-top: 1rem;
-            animation: slideUp 0.5s ease-out;
-        `;
-        e.target.appendChild(successDiv);
-        
-        // Reset form after delay
-        setTimeout(() => {
-            button.innerHTML = originalText;
-            button.style.background = '';
-            e.target.reset();
-            successDiv.remove();
-        }, 7000);
-    }, 1500);
+            // Show success message
+            const successDiv = document.createElement('div');
+            successDiv.className = 'form-success';
+            successDiv.innerHTML = `
+                <h3>Thanks for reaching out, ${data.name}! 🎉</h3>
+                <p>I'll get back to you within 24 hours. Looking forward to helping you bring more sunshine to your operations!</p>
+            `;
+            successDiv.style.cssText = `
+                background: var(--primary-gold);
+                color: var(--white);
+                padding: 1.5rem;
+                border-radius: 15px;
+                margin-top: 1rem;
+                animation: slideUp 0.5s ease-out;
+            `;
+            e.target.appendChild(successDiv);
+            
+            // Reset form after delay
+            setTimeout(() => {
+                button.innerHTML = originalText;
+                button.style.background = '';
+                e.target.reset();
+                successDiv.remove();
+            }, 7000);
+        }
+    } catch (error) {
+        console.error('Contact form error:', error);
+        button.innerHTML = originalText;
+        button.classList.remove('loading');
+    }
 });
 
 // Add playful animations on scroll
@@ -367,32 +370,6 @@ if (window.innerWidth > 768) {
     });
 }
 
-// Fun 404 handler (for when you add routing)
-function show404Page() {
-    document.body.innerHTML = `
-        <div style="
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            text-align: center;
-            padding: 2rem;
-            background: linear-gradient(135deg, rgba(254, 188, 89, 0.1) 0%, rgba(54, 101, 96, 0.05) 100%);
-        ">
-            <h1 style="font-size: 8rem; margin: 0;">404</h1>
-            <h2 style="color: var(--primary-teal); margin: 1rem 0;">Oops! Looks like this page took a day off!</h2>
-            <p style="font-size: 1.25rem; margin: 1rem 0;">
-                Even automation needs a break sometimes. 🌴
-            </p>
-            <div style="font-size: 4rem; animation: bounce 2s ease-in-out infinite;">☀️</div>
-            <a href="/" class="btn btn-primary" style="margin-top: 2rem;">
-                Take me back to the sunshine
-            </a>
-        </div>
-    `;
-}
-
 // Initialize everything when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
     console.log('🌞 Welcome to Sunnyside Ops! Less chaos, more daylight.');
@@ -400,6 +377,44 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Add smooth reveal for hero content
     document.querySelector('.hero-content')?.classList.add('animate-fade-in');
+    
+    // Horizontal scroll controls for services section
+    const servicesGrid = document.querySelector('.services-grid');
+    const scrollLeft = document.querySelector('.scroll-left');
+    const scrollRight = document.querySelector('.scroll-right');
+    const scrollControls = document.querySelector('.scroll-controls');
+
+    // Make sure all elements exist
+    if (servicesGrid && scrollLeft && scrollRight && scrollControls) {
+        // Check if scrolling is needed
+        function checkScroll() {
+            if (servicesGrid.scrollWidth > servicesGrid.clientWidth) {
+                scrollControls.classList.add('show');
+            } else {
+                scrollControls.classList.remove('show');
+            }
+        }
+
+        // Scroll left
+        scrollLeft.addEventListener('click', () => {
+            servicesGrid.scrollBy({
+                left: -300,
+                behavior: 'smooth'
+            });
+        });
+
+        // Scroll right
+        scrollRight.addEventListener('click', () => {
+            servicesGrid.scrollBy({
+                left: 300,
+                behavior: 'smooth'
+            });
+        });
+
+        // Check on load and resize
+        checkScroll();
+        window.addEventListener('resize', checkScroll);
+    }
 });
 
 // Performance optimization - lazy load images when you add them
@@ -419,46 +434,3 @@ if ('IntersectionObserver' in window) {
         imageObserver.observe(img);
     });
 }
-
-// Horizontal scroll controls for services section
-document.addEventListener('DOMContentLoaded', () => {
-  const servicesGrid = document.querySelector('.services-grid');
-  const scrollLeft = document.querySelector('.scroll-left');
-  const scrollRight = document.querySelector('.scroll-right');
-  const scrollControls = document.querySelector('.scroll-controls');
-
-  // Make sure all elements exist
-  if (!servicesGrid || !scrollLeft || !scrollRight || !scrollControls) {
-    console.log('Scroll elements not found');
-    return;
-  }
-
-  // Check if scrolling is needed
-  function checkScroll() {
-    if (servicesGrid.scrollWidth > servicesGrid.clientWidth) {
-      scrollControls.classList.add('show');
-    } else {
-      scrollControls.classList.remove('show');
-    }
-  }
-
-  // Scroll left
-  scrollLeft.addEventListener('click', () => {
-    servicesGrid.scrollBy({
-      left: -300,
-      behavior: 'smooth'
-    });
-  });
-
-  // Scroll right
-  scrollRight.addEventListener('click', () => {
-    servicesGrid.scrollBy({
-      left: 300,
-      behavior: 'smooth'
-    });
-  });
-
-  // Check on load and resize
-  checkScroll();
-  window.addEventListener('resize', checkScroll);
-});
