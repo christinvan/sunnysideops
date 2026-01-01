@@ -414,3 +414,36 @@ if ('IntersectionObserver' in window) {
         imageObserver.observe(img);
     });
 }
+
+// Horizontal scroll controls for services section
+const servicesGrid = document.querySelector('.services-grid');
+const scrollLeft = document.querySelector('.scroll-left');
+const scrollRight = document.querySelector('.scroll-right');
+const scrollControls = document.querySelector('.scroll-controls');
+
+// Check if scrolling is needed
+function checkScroll() {
+  if (servicesGrid.scrollWidth > servicesGrid.clientWidth) {
+    scrollControls.classList.add('show');
+  }
+}
+
+// Scroll left
+scrollLeft.addEventListener('click', () => {
+  servicesGrid.scrollBy({
+    left: -300,
+    behavior: 'smooth'
+  });
+});
+
+// Scroll right
+scrollRight.addEventListener('click', () => {
+  servicesGrid.scrollBy({
+    left: 300,
+    behavior: 'smooth'
+  });
+});
+
+// Check on load and resize
+checkScroll();
+window.addEventListener('resize', checkScroll);
