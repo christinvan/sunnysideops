@@ -477,6 +477,19 @@ p {
     scrollbar-width: none;
 }
 
+.services-carousel {
+  position: relative;
+}
+
+.services-carousel .scroll-arrow {
+  display: none;
+}
+
+.services-carousel.show .scroll-arrow {
+  display: block;
+}
+
+
 /* Scroll Arrow Controls */
 .scroll-controls {
     display: none;
