@@ -416,34 +416,44 @@ if ('IntersectionObserver' in window) {
 }
 
 // Horizontal scroll controls for services section
-const servicesGrid = document.querySelector('.services-grid');
-const scrollLeft = document.querySelector('.scroll-left');
-const scrollRight = document.querySelector('.scroll-right');
-const scrollControls = document.querySelector('.scroll-controls');
+document.addEventListener('DOMContentLoaded', () => {
+  const servicesGrid = document.querySelector('.services-grid');
+  const scrollLeft = document.querySelector('.scroll-left');
+  const scrollRight = document.querySelector('.scroll-right');
+  const scrollControls = document.querySelector('.scroll-controls');
 
-// Check if scrolling is needed
-function checkScroll() {
-  if (servicesGrid.scrollWidth > servicesGrid.clientWidth) {
-    scrollControls.classList.add('show');
+  // Make sure all elements exist
+  if (!servicesGrid || !scrollLeft || !scrollRight || !scrollControls) {
+    console.log('Scroll elements not found');
+    return;
   }
-}
 
-// Scroll left
-scrollLeft.addEventListener('click', () => {
-  servicesGrid.scrollBy({
-    left: -300,
-    behavior: 'smooth'
+  // Check if scrolling is needed
+  function checkScroll() {
+    if (servicesGrid.scrollWidth > servicesGrid.clientWidth) {
+      scrollControls.classList.add('show');
+    } else {
+      scrollControls.classList.remove('show');
+    }
+  }
+
+  // Scroll left
+  scrollLeft.addEventListener('click', () => {
+    servicesGrid.scrollBy({
+      left: -300,
+      behavior: 'smooth'
+    });
   });
-});
 
-// Scroll right
-scrollRight.addEventListener('click', () => {
-  servicesGrid.scrollBy({
-    left: 300,
-    behavior: 'smooth'
+  // Scroll right
+  scrollRight.addEventListener('click', () => {
+    servicesGrid.scrollBy({
+      left: 300,
+      behavior: 'smooth'
+    });
   });
-});
 
-// Check on load and resize
-checkScroll();
-window.addEventListener('resize', checkScroll);
+  // Check on load and resize
+  checkScroll();
+  window.addEventListener('resize', checkScroll);
+});
