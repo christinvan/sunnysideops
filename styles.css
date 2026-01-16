@@ -369,34 +369,27 @@ p {
     }
 }
 
-/* Section Styles */
-.section-title {
-    text-align: center;
-    margin-bottom: 1rem;
-    color: var(--primary-teal);
-}
-
-.section-subtitle {
-    text-align: center;
-    font-size: 1.125rem;
-    color: var(--text-dark);
-    max-width: 700px;
-    margin: 0 auto 3rem;
-}
-
-/* Services Section */
+/* Services Section - Replace the existing services styles with this */
 .services {
     padding: 80px 0;
     background: var(--white);
 }
 
+.services-carousel {
+    position: relative;
+}
+
+/* Hide the scroll arrows since we're removing horizontal scroll */
+.scroll-arrow {
+    display: none !important;
+}
+
 .services-grid {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
-    overflow-x: auto;
-    padding-bottom: 1rem;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
+    padding: 0;
+    overflow: visible; /* Remove horizontal scroll */
 }
 
 .service-card {
@@ -406,8 +399,9 @@ p {
     transition: all var(--transition-speed);
     position: relative;
     overflow: hidden;
-    flex: 0 0 280px;
-    scroll-snap-align: start;
+    /* Remove the flex properties that were forcing horizontal layout */
+    flex: unset;
+    scroll-snap-align: unset;
 }
 
 .service-card::before {
@@ -451,42 +445,37 @@ p {
     margin-bottom: 1rem;
 }
 
-.service-features {
-    list-style: none;
-    margin-top: 1rem;
+.service-card p {
+    line-height: 1.6;
+    color: var(--text-dark);
 }
 
-.service-features li {
-    padding: 0.5rem 0;
-    padding-left: 1.5rem;
-    position: relative;
-}
-
-.service-features li::before {
-    content: '✨';
-    position: absolute;
-    left: 0;
-}
-
+/* Remove scrollbar hiding since we don't need it anymore */
 .services-grid::-webkit-scrollbar {
-    display: none;
+    display: unset;
 }
 
 .services-grid {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+    -ms-overflow-style: unset;
+    scrollbar-width: unset;
 }
 
-.services-carousel {
-  position: relative;
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .services-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
 }
 
-.services-carousel .scroll-arrow {
-  display: none;
-}
-
-.services-carousel.show .scroll-arrow {
-  display: block;
+@media (max-width: 768px) {
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .service-card {
+        padding: 1.5rem;
+    }
 }
 
 
