@@ -378,11 +378,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Add smooth reveal for hero content
     document.querySelector('.hero-content')?.classList.add('animate-fade-in');
     
-    // Horizontal scroll controls for services section
-    const servicesGrid = document.querySelector('.services-grid');
-    const scrollLeft = document.querySelector('.scroll-left');
-    const scrollRight = document.querySelector('.scroll-right');
-    const scrollControls = document.querySelector('.scroll-controls');
+
 
     // Make sure all elements exist
     if (servicesGrid && scrollLeft && scrollRight && scrollControls) {
