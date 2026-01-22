@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Sunnyside Ops</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+               <a href="index.html" class="logo-link">
+                <img src="sunnysidelogo2.png" alt="Sunnyside Ops" class="logo-image">
+                </a>
+            </div>
+            <button class="mobile-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="index.html#services" class="nav-link">Services</a></li>
+                <li><a href="index.html#about" class="nav-link">About</a></li>
+                <li><a href="work.html" class="nav-link active">Work</a></li>
+                <li><a href="index.html#built-by-sunnyside" class="nav-link">Built By Sunnyside</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Portfolio Hero -->
+    <section class="portfolio-hero">
+        <div class="container">
+            <h1 class="portfolio-title animate-fade-in">
+                Work That Eliminates <span class="highlight">Chaos</span>
+            </h1>
+            <p class="portfolio-subtitle animate-slide-up">
+                Custom automation and web solutions that save businesses 10+ hours weekly—from construction payroll processing to receipt matching to custom web development.
+            </p>
+        </div>
+    </section>
+
+    <!-- Case Studies Section -->
+    <section class="case-studies">
+        <div class="container">
+            
+            <!-- Case Study 1: MATCHBIRD -->
+            <div class="case-study">
+                <div class="case-study-header">
+                    <h2>MATCHBIRD - Receipt Matching Application</h2>
+                    <span class="case-study-tag">Python • OCR • Automation</span>
+                </div>
+                <div class="case-study-content">
+                    <div class="case-study-text">
+                        <h3>The Challenge</h3>
+                        <p>A construction bookkeeper was spending 8+ hours weekly manually matching hundreds of credit card receipts to Buildertrend transactions. The process was tedious, error-prone, and pulled them away from higher-value work.</p>
+                        
+                        <h3>The Solution</h3>
+                        <p>Built a desktop application using Python, PySide6, and OCR technology that automatically matches receipts to transactions. The app scans receipts, extracts key data, and pairs them with Buildertrend entries in seconds.</p>
+                        
+                        <h3>The Results</h3>
+                        <ul class="results-list">
+                            <li>✅ Reduced processing time from 8 hours to 30 minutes weekly</li>
+                            <li>✅ Eliminated manual data entry errors</li>
+                            <li>✅ Saved $400+/month in bookkeeping costs</li>
+                            <li>✅ Freed up time for strategic financial analysis</li>
+                        </ul>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-badge">Python</span>
+                            <span class="tech-badge">PySide6</span>
+                            <span class="tech-badge">OCR</span>
+                            <span class="tech-badge">Buildertrend API</span>
+                        </div>
+                    </div>
+                    <div class="case-study-visual">
+                        <div class="placeholder-image">
+                            <span class="placeholder-icon">📱</span>
+                            <p>Screenshot coming soon</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Case Study 2: Payroll System -->
+            <div class="case-study">
+                <div class="case-study-header">
+                    <h2>Automated Payroll Allocation System</h2>
+                    <span class="case-study-tag">Power Query • Excel • Automation</span>
+                </div>
+                <div class="case-study-content">
+                    <div class="case-study-text">
+                        <h3>The Challenge</h3>
+                        <p>A construction company needed to process complex overtime allocation and job cost tracking across multiple projects. Manual calculations were time-consuming and prone to errors, especially with varying pay rates and project codes.</p>
+                        
+                        <h3>The Solution</h3>
+                        <p>Developed a sophisticated Power Query system that automatically processes payroll data, allocates overtime correctly, and tracks costs by project. The system handles complex business rules and generates ready-to-use reports.</p>
+                        
+                        <h3>The Results</h3>
+                        <ul class="results-list">
+                            <li>✅ Reduced payroll processing time by 75%</li>
+                            <li>✅ Eliminated manual calculation errors</li>
+                            <li>✅ Provided real-time job cost visibility</li>
+                            <li>✅ Automated multi-project overtime allocation</li>
+                        </ul>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-badge">Power Query</span>
+                            <span class="tech-badge">Excel</span>
+                            <span class="tech-badge">Data Transformation</span>
+                        </div>
+                    </div>
+                    <div class="case-study-visual">
+                        <div class="placeholder-image">
+                            <span class="placeholder-icon">📊</span>
+                            <p>System diagram coming soon</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Case Study 3: QuickBooks Integration -->
+            <div class="case-study">
+                <div class="case-study-header">
+                    <h2>QuickBooks Transaction Processor</h2>
+                    <span class="case-study-tag">Python • QuickBooks API • Automation</span>
+                </div>
+                <div class="case-study-content">
+                    <div class="case-study-text">
+                        <h3>The Challenge</h3>
+                        <p>Manual transaction categorization and matching in QuickBooks was eating up hours each week. The business needed an automated way to process and categorize transactions consistently.</p>
+                        
+                        <h3>The Solution</h3>
+                        <p>Built a Python automation tool with QuickBooks API integration that automatically categorizes transactions based on customizable rules, matches invoices to payments, and flags exceptions for review.</p>
+                        
+                        <h3>The Results</h3>
+                        <ul class="results-list">
+                            <li>✅ Automated 90% of transaction processing</li>
+                            <li>✅ Consistent categorization across all entries</li>
+                            <li>✅ Saved 5+ hours weekly on bookkeeping</li>
+                            <li>✅ Improved financial reporting accuracy</li>
+                        </ul>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-badge">Python</span>
+                            <span class="tech-badge">QuickBooks API</span>
+                            <span class="tech-badge">Data Processing</span>
+                        </div>
+                    </div>
+                    <div class="case-study-visual">
+                        <div class="placeholder-image">
+                            <span class="placeholder-icon">💳</span>
+                            <p>Interface preview coming soon</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Case Study 4: Website Projects -->
+            <div class="case-study">
+                <div class="case-study-header">
+                    <h2>Custom Website Development</h2>
+                    <span class="case-study-tag">HTML/CSS/JS • Web Design • UX</span>
+                </div>
+                <div class="case-study-content">
+                    <div class="case-study-text">
+                        <h3>The Challenge</h3>
+                        <p>Small businesses needed professional, modern websites that represent their brand well without enterprise costs. Sites needed to be fast, mobile-responsive, and easy to update.</p>
+                        
+                        <h3>The Solution</h3>
+                        <p>Created custom websites with clean design, professional UX, and interactive features. Built with modern HTML/CSS/JS for optimal performance and user experience.</p>
+                        
+                        <h3>Projects Include</h3>
+                        <ul class="results-list">
+                            <li>✅ <strong>Sunnyside Ops</strong> - This site! Custom one-page design with smooth animations</li>
+                            <li>✅ <strong>Orange Grove Woodworking</strong> - Luxury woodworking portfolio site</li>
+                            <li>✅ <strong>Client Sites</strong> - Multiple construction and trades business websites</li>
+                        </ul>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-badge">HTML/CSS</span>
+                            <span class="tech-badge">JavaScript</span>
+                            <span class="tech-badge">Responsive Design</span>
+                            <span class="tech-badge">UX Design</span>
+                        </div>
+                        
+                        <div class="case-study-links">
+                            <a href="https://sunnysideops.io" target="_blank" class="btn btn-secondary">View Sunnyside Ops</a>
+                            <a href="https://orangegrovewoodworking.com" target="_blank" class="btn btn-secondary">View Orange Grove</a>
+                        </div>
+                    </div>
+                    <div class="case-study-visual">
+                        <div class="placeholder-image">
+                            <span class="placeholder-icon">💻</span>
+                            <p>Site screenshots coming soon</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Skills & Technologies Section -->
+    <section class="skills-section">
+        <div class="container">
+            <h2 class="section-title">Technologies & Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>🐍 Automation & Backend</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">FastAPI</span>
+                        <span class="skill-tag">API Integration</span>
+                        <span class="skill-tag">Data Processing</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>💻 Web Development</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">HTML/CSS</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">Responsive Design</span>
+                        <span class="skill-tag">UX Design</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>📊 Data & Analysis</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Power Query</span>
+                        <span class="skill-tag">Excel</span>
+                        <span class="skill-tag">OCR</span>
+                        <span class="skill-tag">Data Transformation</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>🎥 Content Creation</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Video Production</span>
+                        <span class="skill-tag">Content Strategy</span>
+                        <span class="skill-tag">10+ Years Experience</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="portfolio-cta">
+        <div class="container">
+            <h2>Ready to streamline your operations?</h2>
+            <p>Let's talk about how automation can transform your business.</p>
+            <a href="index.html#about" class="btn btn-primary btn-large">Get in Touch ☀️</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        Sunnyside Ops
+                    </div>
+                    <p class="footer-tagline">Less chaos, more daylight</p>
+                </div>
+                <div class="footer-links">
+                    <a href="index.html#services">Services</a>
+                    <a href="index.html#about">About</a>
+                    <a href="work.html">Work</a>
+                    <a href="index.html#built-by-sunnyside">Products</a>
+                </div>
+                <div class="footer-copyright">
+                    <p>&copy; 2025 Sunnyside Ops. Built with ☀️ and lots of coffee.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
