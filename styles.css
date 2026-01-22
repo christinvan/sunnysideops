@@ -862,3 +862,254 @@ html {
     background: var(--primary-gold);
     color: var(--white);
 }
+
+/* Portfolio Hero */
+.portfolio-hero {
+    padding: 140px 0 60px;
+    background: linear-gradient(135deg, rgba(254, 188, 89, 0.1) 0%, rgba(54, 101, 96, 0.05) 100%);
+    text-align: center;
+}
+
+.portfolio-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    margin-bottom: 1rem;
+}
+
+.portfolio-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-dark);
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.8;
+}
+
+/* Case Studies */
+.case-studies {
+    padding: 60px 0;
+    background: var(--white);
+}
+
+.case-study {
+    background: var(--light-gray);
+    border-radius: 30px;
+    padding: 3rem;
+    margin-bottom: 3rem;
+    box-shadow: 0 5px 20px var(--shadow-light);
+    transition: all var(--transition-speed);
+}
+
+.case-study:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px var(--shadow-medium);
+}
+
+.case-study-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.case-study-header h2 {
+    color: var(--primary-teal);
+    margin: 0;
+}
+
+.case-study-tag {
+    background: var(--primary-gold);
+    color: var(--white);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.case-study-content {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 3rem;
+    align-items: start;
+}
+
+.case-study-text h3 {
+    color: var(--primary-teal);
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    font-size: 1.25rem;
+}
+
+.case-study-text h3:first-of-type {
+    margin-top: 0;
+}
+
+.results-list {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+}
+
+.results-list li {
+    padding: 0.5rem 0;
+    line-height: 1.6;
+}
+
+.tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+}
+
+.tech-badge {
+    background: var(--white);
+    color: var(--primary-teal);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border: 2px solid var(--primary-teal);
+}
+
+.case-study-visual {
+    position: sticky;
+    top: 100px;
+}
+
+.placeholder-image {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 3rem 2rem;
+    text-align: center;
+    border: 3px dashed var(--medium-gray);
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.placeholder-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    opacity: 0.5;
+}
+
+.placeholder-image p {
+    color: var(--dark-gray);
+    font-style: italic;
+    margin: 0;
+}
+
+.case-study-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+}
+
+/* Skills Section */
+.skills-section {
+    padding: 60px 0;
+    background: linear-gradient(135deg, rgba(54, 101, 96, 0.05) 0%, rgba(254, 188, 89, 0.05) 100%);
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.skill-category {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px var(--shadow-light);
+    transition: all var(--transition-speed);
+}
+
+.skill-category:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px var(--shadow-medium);
+}
+
+.skill-category h3 {
+    color: var(--primary-teal);
+    margin-bottom: 1.5rem;
+    font-size: 1.25rem;
+}
+
+.skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.skill-tag {
+    background: var(--light-gray);
+    color: var(--text-dark);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+/* Portfolio CTA */
+.portfolio-cta {
+    padding: 80px 0;
+    background: var(--primary-teal);
+    text-align: center;
+}
+
+.portfolio-cta h2 {
+    color: var(--white);
+    margin-bottom: 1rem;
+}
+
+.portfolio-cta p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+}
+
+/* Responsive Portfolio Styles */
+@media (max-width: 968px) {
+    .case-study-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .case-study-visual {
+        position: static;
+    }
+    
+    .case-study {
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .portfolio-hero {
+        padding: 100px 0 40px;
+    }
+    
+    .case-study-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .case-study-links {
+        flex-direction: column;
+    }
+    
+    .case-study-links .btn {
+        width: 100%;
+    }
+}
+EOF
