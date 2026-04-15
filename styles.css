@@ -330,16 +330,8 @@ p  { color: var(--ink-mid); line-height: 1.8; font-size: 1rem; }
 
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 1.25rem;
-}
-
-.service-card:nth-child(4) {
-  grid-column: 1 / 2;
-}
-
-.service-card:nth-child(5) {
-  grid-column: 2 / 4;
 }
 
 .service-card {
@@ -667,7 +659,6 @@ p  { color: var(--ink-mid); line-height: 1.8; font-size: 1rem; }
   .hero-badge { right: -10px; }
 
   .services-grid { grid-template-columns: 1fr 1fr; }
-  .service-card--wide { grid-column: span 2; }
 
   .about-inner { grid-template-columns: 1fr; }
   .about-photo-col { min-height: 300px; }
