@@ -127,7 +127,7 @@ p  { color: var(--ink-mid); line-height: 1.8; font-size: 1rem; }
   align-items: center;
   justify-content: space-between;
 }
-.logo-image  { height: 36px; width: auto; }
+.logo-image  { height: 75px; width: auto; }
 .logo-link   { display: block; }
 .nav-menu {
   display: flex;
