@@ -1,246 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sunnyside Ops - Less Chaos, More Daylight</title>
-    
-    <!-- Favicon -->
-    <link rel="icon" href="favicon.png">
-    
-    <!-- Open Graph / Social Media Preview -->
-    <meta property="og:title" content="Sunnyside Ops - Less Chaos, More Daylight">
-    <meta property="og:description" content="Custom automation and web solutions that save businesses 10+ hours weekly. Python automation, web development, and workflow optimization.">
-    <meta property="og:image" content="https://sunnysideops.io/social-preview.png">
-    <meta property="og:url" content="https://sunnysideops.io">
-    <meta property="og:type" content="website">
-    
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Stylesheet -->
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sunnyside Ops - Less Chaos, More Daylight</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.png">
+
+  <!-- Open Graph / Social Media Preview -->
+  <meta property="og:title" content="Sunnyside Ops - Less Chaos, More Daylight">
+  <meta property="og:description" content="Custom automation and web solutions that save businesses 10+ hours weekly. Python automation, web development, and workflow optimization.">
+  <meta property="og:image" content="https://sunnysideops.io/social-preview.png">
+  <meta property="og:url" content="https://sunnysideops.io">
+  <meta property="og:type" content="website">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
 </head>
-    
+
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-               <a href="#home" class="logo-link">
-                <img src="sunnysidelogo2.png" alt="Sunnyside Ops" class="logo-image">
-                </a>
-            </div>
-            <button class="mobile-toggle" aria-label="Toggle menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <ul class="nav-menu">
-                <li><a href="#home" class="nav-link">Home</a></li>
-                <li><a href="#services" class="nav-link">Services</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="work.html" class="nav-link">Work</a></li>
-                <li><a href="#built-by-sunnyside" class="nav-link">Built By Sunnyside</a></li>
-            </ul>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <a href="#home" class="logo-link">
+          <img src="sunnysidelogo2.png" alt="Sunnyside Ops" class="logo-image">
+        </a>
+      </div>
+      <button class="mobile-toggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-menu">
+        <li><a href="#services" class="nav-link">Services</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="work.html" class="nav-link">Work</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1 class="hero-title animate-fade-in">
+          Less busywork, <span class="highlight">more daylight</span>
+        </h1>
+        <p class="hero-subtitle animate-slide-up">
+          Sunnyside Ops builds simple, powerful systems that help small businesses run smoother—automating repetitive tasks so you can focus on what matters.
+        </p>
+        <div class="hero-cta animate-slide-up-delay">
+          <a href="#about" class="btn btn-primary">Get In Touch</a>
         </div>
-    </nav>
+      </div>
+    </div>
+  </section>
 
-    <!-- Home Section -->
-    <section id="home" class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1 class="hero-title animate-fade-in">
-                    Less busywork, <span class="highlight">more daylight</span>
-                </h1>
-                <p class="hero-subtitle animate-slide-up">
-                    Sunnyside Ops builds simple, powerful systems that help businesses run smoother.
-                    We streamline workflows, automate repetitive tasks, and remove the operational mess—so your team can work smarter, move faster, and stay focused on what matters.
-                </p>
-                <div class="hero-cta animate-slide-up-delay">
-                    <a href="#services" class="btn btn-primary">See How I Can Help</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-<section id="services" class="services">
-  <div class="container">
-    <h2 class="section-title">What We Do</h2>
-    <p class="section-subtitle">
-      Operational, technical, and AI-driven solutions built to make your business run smoother.
-    </p>
-
-    <!-- Carousel Wrapper -->
-    <div class="services-carousel">
-
-      <!-- Left Arrow -->
-      <button class="scroll-arrow scroll-left" aria-label="Scroll left">←</button>
-
-      <!-- Services Grid -->
+  <!-- Services Section -->
+  <section id="services" class="services">
+    <div class="container">
+      <h2 class="section-title">What I Do</h2>
+      <p class="section-subtitle">
+        Operational, technical, and AI-driven solutions built to make your business run smoother.
+      </p>
       <div class="services-grid">
         <div class="service-card">
           <div class="service-icon">🔍</div>
           <h3>Workflow Audits</h3>
-          <p>
-            Identify bottlenecks and optimize efficiency through a comprehensive analysis of your workflows and internal processes.
-          </p>
+          <p>Identify bottlenecks and optimize efficiency through a comprehensive analysis of your workflows and internal processes.</p>
         </div>
-
         <div class="service-card">
           <div class="service-icon">🔄</div>
           <h3>Workflow Automation</h3>
-          <p>
-            Reduce manual work, increase accuracy, and streamline daily operations with automated processes.
-          </p>
+          <p>Reduce manual work, increase accuracy, and streamline daily operations with automated processes.</p>
         </div>
-
         <div class="service-card">
           <div class="service-icon">🤖</div>
           <h3>AI Integration</h3>
-          <p>
-            Improve speed, clarity, and performance by embedding practical AI tools into your day-to-day workflows and data operations.
-          </p>
+          <p>Improve speed, clarity, and performance by embedding practical AI tools into your day-to-day workflows.</p>
         </div>
-
         <div class="service-card">
           <div class="service-icon">🧩</div>
-          <h3>Systems Consulting &amp; Optimization</h3>
-          <p>
-            Strengthen operational performance by assessing your tech stack and implementing more effective, scalable software solutions.
-          </p>
+          <h3>Systems Consulting</h3>
+          <p>Strengthen operational performance by assessing your tech stack and implementing more effective, scalable solutions.</p>
         </div>
-
         <div class="service-card">
           <div class="service-icon">💻</div>
           <h3>Website Design &amp; Development</h3>
-          <p>
-            Elevate your online presence with clean, modern, and scalable websites built for strong performance and professional UX.
-          </p>
+          <p>Elevate your online presence with clean, modern websites built for strong performance and professional UX.</p>
         </div>
       </div>
-
-      <!-- Right Arrow -->
-      <button class="scroll-arrow scroll-right" aria-label="Scroll right">→</button>
-
     </div>
-  </div>
-</section>
+  </section>
 
-
-    <!-- About Section -->
-    <section id="about" class="about-contact">
-        <div class="container">
-            <div class="about-contact-grid">
-                <div class="about-section">
-                    <h2>Hey, I'm Christin! 👋</h2>
-                        <p>
-                            I started Sunnyside Ops with a simple mission: help small businesses stop drowning 
-                            in repetitive tasks and actually enjoy running their companies again.
-                        </p>
-                        <p>
-                            My journey began when I dove deep into streamlining operations for a family 
-                            construction business. What started as a helpful project turned into a passion 
-                            for solving operational puzzles with code and discovering just how much time 
-                            businesses waste on tasks that could be automated.
-                        </p>
-                        <p>
-                            Now I specialize in building custom automation solutions that actually make sense for 
-                            small businesses – no enterprise prices, no overwhelming features you'll never use, 
-                            just smart tools that give you your time back.
-                        </p>
-                    </div>
-                
-                <div class="contact-section">
-                    <h2>Let's Brighten Your Operations!</h2>
-                    <p>
-                        Ready to reclaim your evenings and weekends? Let's chat about how automation 
-                        can transform your business. No pressure, no tech-speak – just a friendly 
-                        conversation about making your work life easier.
-                    </p>
-                    <form id="contact-form" class="contact-form">
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="business">Business Name</label>
-                            <input type="text" id="business" name="business">
-                        </div>
-                        <div class="form-group">
-                            <label for="challenge">What's your biggest time-waster?</label>
-                            <textarea id="challenge" name="challenge" rows="4" 
-                                placeholder="Tell me about that task that makes you go 'ugh, not again!'"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-large">Start the Conversation ☀️</button>
-                    </form>
-                    <div class="contact-alternatives">
-                        <p>Prefer to email directly?</p>
-                        <a href="mailto:christin@sunnysideops.io" class="email-link">christin@sunnysideops.io</a>
-                    </div>
-                </div>
-            </div>
+  <!-- About & Contact Section -->
+  <section id="about" class="about-contact">
+    <div class="container">
+      <div class="about-contact-grid">
+        <div class="about-section">
+          <h2>Hey, I'm Christin! 👋</h2>
+          <p>
+            I started Sunnyside Ops to help small businesses stop drowning in repetitive tasks and actually enjoy running their companies again.
+          </p>
+          <p>
+            My journey began streamlining operations for a family construction business—what started as a helpful project turned into a passion for solving operational puzzles with code.
+          </p>
+          <p>
+            Now I specialize in building custom automation solutions that make sense for small businesses: no enterprise prices, no overwhelming features—just smart tools that give you your time back.
+          </p>
         </div>
-    </section>
 
-    <!-- Built By Sunnyside Section -->
-    <section id="built-by-sunnyside" class="products">
-        <div class="container">
-            <h2 class="section-title">Built By Sunnyside</h2>
-            <p class="section-subtitle">
-                Working on some exciting tools to bring automation sunshine to even more businesses. 
-                Stay tuned! These solutions are brewing! ☕
-            </p>
-            <div class="coming-soon-card">
-                <div class="coming-soon-icon">🚧</div>
-                <h3>Something Awesome is Coming!</h3>
-                <p>
-                    I'm currently developing standardized versions of my most successful custom solutions. 
-                    Think: the power of enterprise software with the simplicity and pricing that actually 
-                    makes sense for small businesses.
-                </p>
-                <div class="newsletter-signup">
-                    <h4>Want to be the first to know?</h4>
-                    <p>Join the Sunnyside newsletter for early access and special launch pricing!</p>
-                    <form id="newsletter-form" class="newsletter-form">
-                        <input type="email" placeholder="your@email.com" required>
-                        <button type="submit" class="btn btn-primary">Keep Me Posted!</button>
-                    </form>
-                </div>
+        <div class="contact-section">
+          <h2>Let's Brighten Your Operations!</h2>
+          <p>
+            Ready to reclaim your time? Let's chat—no pressure, no tech-speak, just a friendly conversation about making your work life easier.
+          </p>
+          <form id="contact-form" class="contact-form">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" required>
             </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <div class="footer-logo">
-                        Sunnyside Ops
-                    </div>
-                    <p class="footer-tagline">Less chaos, more daylight</p>
-                </div>
-                <div class="footer-links">
-                    <a href="#services">Services</a>
-                    <a href="#about">About</a>
-                    <a href="work.html">Work</a>
-                    <a href="#built-by-sunnyside">Products</a>
-                </div>
-                <div class="footer-copyright">
-                    <p>&copy; 2025 Sunnyside Ops. Built with ☀️ and lots of coffee.</p>
-                </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required>
             </div>
+            <div class="form-group">
+              <label for="challenge">What's your biggest time-waster?</label>
+              <textarea id="challenge" name="challenge" rows="4"
+                placeholder="Tell me about that task that makes you go 'ugh, not again!'"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-large">Start the Conversation ☀️</button>
+          </form>
+          <div class="contact-alternatives">
+            <p>Prefer to email directly?</p>
+            <a href="mailto:christin@sunnysideops.io" class="email-link">christin@sunnysideops.io</a>
+          </div>
         </div>
-    </footer>
+      </div>
+    </div>
+  </section>
 
-    <script src="script.js"></script>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <div class="footer-logo">Sunnyside Ops</div>
+          <p class="footer-tagline">Less chaos, more daylight</p>
+        </div>
+        <div class="footer-links">
+          <a href="#services">Services</a>
+          <a href="#about">About</a>
+          <a href="work.html">Work</a>
+        </div>
+        <div class="footer-copyright">
+          <p>&copy; 2025 Sunnyside Ops. Built with ☀️ and lots of coffee.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
