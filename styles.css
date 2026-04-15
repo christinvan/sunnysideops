@@ -106,44 +106,14 @@ p  { color: var(--ink-mid); line-height: 1.8; font-size: 1rem; }
 }
 .btn-full { width: 100%; text-align: center; }
 
-/* ---- Announce Bar ---- */
-.announce-bar {
-  background: var(--teal);
-  height: var(--announce-h);
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 200;
-}
-.announce-track {
-  display: flex;
-  align-items: center;
-  gap: 1.25rem;
-  white-space: nowrap;
-  animation: marqueeScroll 28s linear infinite;
-  font-family: var(--sans);
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.85);
-}
-@keyframes marqueeScroll {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
-
 /* ---- Navbar ---- */
 .navbar {
   position: fixed;
-  top: var(--announce-h); left: 0; right: 0;
+  top: 0; left: 0; right: 0;
   z-index: 100;
   height: var(--nav-h);
-  background: rgba(253, 250, 244, 0.94);
-  backdrop-filter: blur(14px);
-  border-bottom: 1.5px solid var(--warm-mid);
+  background: var(--teal);
+  border-bottom: none;
 }
 .nav-container {
   max-width: var(--max-w);
@@ -167,7 +137,7 @@ p  { color: var(--ink-mid); line-height: 1.8; font-size: 1rem; }
   font-size: 0.875rem;
   font-weight: 600;
   text-decoration: none;
-  color: var(--ink-mid);
+  color: rgba(255,255,255,0.85);
   transition: color 0.2s;
   position: relative;
 }
@@ -180,7 +150,7 @@ p  { color: var(--ink-mid); line-height: 1.8; font-size: 1rem; }
   border-radius: 2px;
   transition: width 0.25s;
 }
-.nav-link:hover { color: var(--teal); }
+.nav-link:hover { color: var(--white); }
 .nav-link:hover::after,
 .nav-link.active::after { width: 100%; }
 
@@ -195,7 +165,7 @@ p  { color: var(--ink-mid); line-height: 1.8; font-size: 1rem; }
 }
 .mobile-toggle span {
   width: 24px; height: 2px;
-  background: var(--ink);
+  background: var(--white);
   border-radius: 2px;
   transition: all 0.3s;
   display: block;
@@ -204,7 +174,7 @@ p  { color: var(--ink-mid); line-height: 1.8; font-size: 1rem; }
 /* ---- Hero ---- */
 .hero {
   min-height: 100vh;
-  padding-top: calc(var(--announce-h) + var(--nav-h));
+  padding-top: var(--nav-h);
   background: var(--cream);
   display: flex;
   align-items: stretch;
@@ -607,7 +577,7 @@ p  { color: var(--ink-mid); line-height: 1.8; font-size: 1rem; }
 
 /* ---- Work / Portfolio page ---- */
 .portfolio-hero {
-  padding: calc(var(--announce-h) + var(--nav-h) + 3rem) 0 3.5rem;
+  padding: calc(var(--nav-h) + 3rem) 0 3.5rem;
   background: var(--cream);
   text-align: center;
   border-bottom: 2px solid var(--warm-mid);
