@@ -192,16 +192,12 @@ p  { color: var(--ink-mid); line-height: 1.8; font-size: 1rem; }
 .hero-photo-placeholder {
   width: 340px;
   height: 420px;
-  background: linear-gradient(145deg, var(--teal-light) 0%, var(--teal-pale) 100%);
   border-radius: 60% 40% 55% 45% / 50% 45% 55% 50%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  position: relative;
   overflow: hidden;
   border: 3px solid var(--teal-light);
+  object-fit: cover;
+  object-position: center top;
+  display: block;
 }
 .photo-initial {
   font-family: var(--serif);
@@ -626,7 +622,7 @@ p.hero-title {
   .hero-photo-col { order: -1; }
   .hero-sub { margin: 0 auto 2rem; }
   .hero-actions { justify-content: center; }
-  .hero-photo-placeholder { width: 260px; height: 320px; }
+  .hero-photo-placeholder { width: 260px; height: 320px; object-fit: cover; object-position: center top; }
   .hero-tag-bubble { left: -10px; }
   .hero-badge { right: -10px; }
 
