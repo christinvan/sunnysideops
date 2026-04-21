@@ -1,4 +1,4 @@
-//* =============================================
+/* =============================================
    SUNNYSIDE OPS — Solarpunk Retro-Web v4
    ============================================= */
 
@@ -111,13 +111,13 @@ p  { color: var(--ink-mid); line-height: 1.8; font-size: 1rem; }
 }
 
 .btn-primary {
-  background: var(--rust);
-  color: var(--white);
-  border-color: var(--rust);
+  background: var(--gold);
+  color: var(--ink);
+  border-color: var(--ink);
   box-shadow: 3px 3px 0 var(--ink);
 }
 .btn-primary:hover {
-  background: var(--rust-dark);
+  background: var(--gold-light);
   box-shadow: 5px 5px 0 var(--ink);
   transform: translate(-2px, -2px);
 }
@@ -136,15 +136,15 @@ p  { color: var(--ink-mid); line-height: 1.8; font-size: 1rem; }
 }
 
 .btn-nav {
-  background: var(--gold);
-  color: var(--ink);
+  background: var(--rust);
+  color: var(--white);
   border-color: var(--ink);
   font-size: 0.72rem;
   padding: 0.55rem 1.2rem;
   box-shadow: 2px 2px 0 var(--ink);
 }
 .btn-nav:hover {
-  background: var(--rust);
+  background: var(--rust-dark);
   color: var(--white);
   box-shadow: 4px 4px 0 var(--ink);
   transform: translate(-2px, -2px);
@@ -258,7 +258,7 @@ p  { color: var(--ink-mid); line-height: 1.8; font-size: 1rem; }
   object-fit: cover;
   object-position: center top;
   display: block;
-  box-shadow: 6px 6px 0 var(--rust);
+  box-shadow: 6px 6px 0 var(--gold);
 }
 
 .hero-tag-bubble {
@@ -278,7 +278,7 @@ p  { color: var(--ink-mid); line-height: 1.8; font-size: 1rem; }
 .hero-badge {
   position: absolute;
   top: 20px; right: -20px;
-  background: var(--rust);
+  background: var(--gold);
   padding: 0.45rem 0.9rem;
   display: flex;
   align-items: center;
@@ -286,7 +286,7 @@ p  { color: var(--ink-mid); line-height: 1.8; font-size: 1rem; }
   font-family: var(--mono);
   font-size: 0.68rem;
   font-weight: 400;
-  color: var(--white);
+  color: var(--ink);
   border: var(--border);
   box-shadow: 3px 3px 0 var(--ink);
   letter-spacing: 0.05em;
@@ -339,7 +339,7 @@ p.hero-title {
 
 /* ---- Marquee Strip ---- */
 .marquee-strip {
-  background: var(--rust);
+  background: var(--gold);
   padding: 0.875rem 0;
   overflow: hidden;
   border-top: var(--border);
@@ -356,9 +356,9 @@ p.hero-title {
   font-weight: 400;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--white);
+  color: var(--ink);
 }
-.dot { color: var(--gold); font-size: 0.5rem; }
+.dot { color: var(--rust); font-size: 0.5rem; }
 
 @keyframes marqueeScroll {
   from { transform: translateX(0); }
@@ -557,9 +557,9 @@ p.hero-title {
   margin-top: 0.5rem;
 }
 .contact .btn-primary:hover {
-  background: var(--rust);
-  color: var(--white);
-  border-color: var(--rust);
+  background: var(--gold-light);
+  color: var(--ink);
+  border-color: var(--gold-light);
   box-shadow: 5px 5px 0 rgba(255,255,255,0.15);
   transform: translate(-2px, -2px);
 }
@@ -760,24 +760,25 @@ p.hero-title {
 
 .portfolio-cta {
   padding: 5rem 0;
-  background: var(--rust);
+  background: var(--gold);
   text-align: center;
   border-top: var(--border);
 }
-.portfolio-cta h2 { color: var(--white); margin-bottom: 0.875rem; }
-.portfolio-cta p  { color: rgba(255,255,255,0.7); margin-bottom: 1.75rem; font-family: var(--mono); font-size: 0.9rem; }
+.portfolio-cta h2 { color: var(--ink); margin-bottom: 0.875rem; }
+.portfolio-cta p  { color: var(--ink-mid); margin-bottom: 1.75rem; font-family: var(--mono); font-size: 0.9rem; }
 .portfolio-cta .btn-primary {
-  background: var(--gold);
-  color: var(--ink);
+  background: var(--ink);
+  color: var(--gold);
   border-color: var(--ink);
-  box-shadow: 4px 4px 0 var(--ink);
+  box-shadow: 4px 4px 0 var(--ink-mid);
   font-weight: 700;
   display: inline-block;
 }
 .portfolio-cta .btn-primary:hover {
-  background: var(--ink);
-  color: var(--gold);
-  box-shadow: 6px 6px 0 rgba(0,0,0,0.3);
+  background: var(--rust);
+  color: var(--white);
+  border-color: var(--rust-dark);
+  box-shadow: 6px 6px 0 var(--ink);
 }
 .btn-large { padding: 1rem 2.75rem; font-size: 0.85rem; }
 
