@@ -223,12 +223,35 @@ p  { color: var(--ink-mid); line-height: 1.8; font-size: 1rem; }
 /* ---- Hero ---- */
 .hero {
   min-height: calc(100vh - var(--nav-h));
-  background: var(--cream);
   display: flex;
-  align-items: stretch;
+  align-items: center;
   overflow: hidden;
   border-bottom: var(--border);
+  position: relative;
 }
+
+.hero-bg-gif {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  z-index: 0;
+}
+
+.hero-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(245, 237, 224, 0.94) 0%,
+    rgba(245, 237, 224, 0.80) 55%,
+    rgba(245, 237, 224, 0.15) 100%
+  );
+  z-index: 1;
+}
+
 .hero-inner {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -238,6 +261,8 @@ p  { color: var(--ink-mid); line-height: 1.8; font-size: 1rem; }
   padding: 4rem 2rem;
   gap: 0;
   align-items: stretch;
+  position: relative;
+  z-index: 2;
 }
 
 /* Photo col */
@@ -482,6 +507,29 @@ p.hero-title {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 2rem 0;
+}
+.about-photo-col .hero-photo-wrap {
+  position: relative;
+  display: inline-block;
+}
+.about-photo-col .hero-photo-placeholder {
+  width: 340px;
+  height: 420px;
+  border-radius: 0;
+  overflow: hidden;
+  border: var(--border);
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  box-shadow: 6px 6px 0 var(--gold);
+}
+.about-photo-col .hero-badge {
+  position: absolute;
+  bottom: -16px;
+  right: -16px;
+  top: auto;
+  box-shadow: 3px 3px 0 var(--ink);
 }
 .about-text-col { display: flex; flex-direction: column; }
 .about-text-col h2 { margin-bottom: 1.5rem; }
