@@ -228,6 +228,7 @@ p  { color: var(--ink-mid); line-height: 1.8; font-size: 1rem; }
   overflow: hidden;
   border-bottom: var(--border);
   position: relative;
+  background: var(--cream);
 }
 
 .hero-bg-gif {
@@ -238,6 +239,7 @@ p  { color: var(--ink-mid); line-height: 1.8; font-size: 1rem; }
   object-fit: cover;
   object-position: center 30%;
   z-index: 0;
+  display: block;
 }
 
 .hero-scrim {
