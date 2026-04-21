@@ -79,7 +79,7 @@ h3 {
   line-height: 1.2;
   letter-spacing: -0.01em;
 }
-em { font-style: italic; color: var(--rust); }
+em { font-style: italic; color: var(--gold); }
 p  { color: var(--ink-mid); line-height: 1.8; font-size: 1rem; }
 
 .eyebrow {
@@ -313,7 +313,7 @@ p  { color: var(--ink-mid); line-height: 1.8; font-size: 1rem; }
 
 p.hero-title {
   font-family: var(--serif);
-  font-size: clamp(2.8rem, 6vw, 5rem);
+  font-size: clamp(2rem, 5vw, 4rem);
   font-weight: 800;
   line-height: 1.05;
   color: var(--ink);
@@ -820,6 +820,7 @@ p.hero-title {
 
 @media (max-width: 640px) {
   .mobile-toggle { display: flex; }
+  p.hero-title { font-size: 1.75rem; letter-spacing: -0.02em; }
   .nav-menu {
     display: none;
     position: absolute;
