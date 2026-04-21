@@ -454,6 +454,17 @@ p.hero-title {
 .service-card h3 { margin-bottom: 0.75rem; font-size: 1.15rem; }
 .service-card p  { font-size: 0.88rem; line-height: 1.75; margin: 0; }
 
+/* Hero full-width override */
+.hero-inner--full {
+  grid-template-columns: 1fr;
+  max-width: 760px;
+  padding: 6rem 2rem;
+}
+.hero-copy-col--full {
+  padding-left: 0;
+  border: none;
+}
+
 /* ---- About ---- */
 .about {
   padding: 5.5rem 0;
@@ -461,13 +472,20 @@ p.hero-title {
   border-top: var(--border);
   border-bottom: var(--border);
 }
-.about-text-centered {
-  max-width: 720px;
-  margin: 0 auto;
-  text-align: center;
+.about-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
 }
-.about-text-centered h2 { margin-bottom: 1.5rem; }
-.about-text-centered p  { margin-bottom: 1.15rem; font-size: 1.05rem; }
+.about-photo-col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.about-text-col { display: flex; flex-direction: column; }
+.about-text-col h2 { margin-bottom: 1.5rem; }
+.about-text-col p  { margin-bottom: 1.15rem; font-size: 1.05rem; }
 
 /* ---- Contact ---- */
 .contact {
@@ -788,24 +806,7 @@ p.hero-title {
 
 /* ---- Responsive ---- */
 @media (max-width: 960px) {
-  .hero-inner {
-    grid-template-columns: 1fr;
-    padding: 3rem 2rem;
-    text-align: center;
-  }
-  .hero-photo-col {
-    order: -1;
-    border-right: none;
-    border-bottom: var(--border);
-    padding-right: 0;
-    padding-bottom: 3rem;
-  }
-  .hero-copy-col { padding-left: 0; padding-top: 3rem; }
-  .hero-sub { margin: 0 auto 2rem; }
-  .hero-actions { justify-content: center; }
-  .hero-photo-placeholder { width: 260px; height: 320px; }
-  .hero-tag-bubble { left: -10px; }
-  .hero-badge { right: -10px; }
+  .hero-inner--full { padding: 4rem 2rem; }
 
   .services-grid { grid-template-columns: 1fr 1fr; }
   .service-card:nth-child(1),
@@ -813,6 +814,11 @@ p.hero-title {
   .service-card:nth-child(3),
   .service-card:nth-child(4),
   .service-card:nth-child(5) { grid-column: span 1; border-bottom: var(--border); }
+
+  .about-inner { grid-template-columns: 1fr; gap: 3rem; text-align: center; }
+  .about-photo-col { justify-content: center; }
+  .hero-photo-placeholder { width: 260px; height: 320px; }
+  .hero-badge { right: -10px; }
 
   .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
   .form-row { grid-template-columns: 1fr; }
