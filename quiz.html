@@ -649,6 +649,7 @@
             <div class="formkit-field">
               <input class="formkit-input" name="email_address" aria-label="Email Address" placeholder="your@email.com" required="" type="email" style="color:#1a1408; border:2px solid #1a1408; border-radius:0; font-family:'Space Mono',monospace; font-size:13px; padding:14px 16px; width:100%; box-shadow:3px 3px 0 #1a1408;">
             </div>
+            <input type="hidden" name="tags" id="kit-tag-field" value="">
             <button data-element="submit" class="formkit-submit" style="background:#7b700b; color:#fff; border:2px solid #1a1408; border-radius:0; font-family:'Space Mono',monospace; font-size:12px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; padding:14px 24px; width:100%; cursor:pointer; box-shadow:4px 4px 0 #1a1408; margin-top:10px;">
               <div class="formkit-spinner"><div></div><div></div><div></div></div>
               <span>Send me my results →</span>
@@ -763,6 +764,14 @@
       other: '🙋 Other selected'
     };
     document.getElementById('industry-badge').textContent = labels[industry];
+    // Set the Kit tag based on industry selection
+    const tags = {
+      trades: 'quiz-trades',
+      ecommerce: 'quiz-ecommerce',
+      service: 'quiz-service',
+      other: 'quiz-other'
+    };
+    document.getElementById('kit-tag-field').value = tags[industry];
     setTimeout(() => goTo('screen-email'), 300);
   }
 
