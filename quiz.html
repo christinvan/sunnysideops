@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What Should I Automate First? — Sunnyside Ops</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --rust:        #ad360b;
+    --rust-dark:   #8a2a08;
+    --rust-light:  #d4613a;
+    --olive:       #7b700b;
+    --olive-light: #a89c2a;
+    --olive-pale:  #f0ead4;
+    --gold:        #caaa4b;
+    --gold-light:  #dfc97a;
+    --gold-pale:   #f7f0d8;
+    --blush:       #e68783;
+    --blush-pale:  #faf0ef;
+    --cream:       #f5ede0;
+    --cream-dark:  #ecdcc8;
+    --cream-mid:   #e8d8c0;
+    --ink:         #1a1408;
+    --ink-mid:     #3d3520;
+    --ink-soft:    #6b6040;
+    --white:       #fdfaf4;
+
+    --serif: 'Syne', system-ui, sans-serif;
+    --mono:  'Space Mono', monospace;
+
+    --border: 2px solid var(--ink);
+    --radius: 0px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--serif);
+    background: var(--cream);
+    color: var(--ink);
+    min-height: 100vh;
+    overflow-x: hidden;
+    line-height: 1.65;
+  }
+
+  /* grain */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 1000; opacity: 0.4;
+  }
+
+  ::selection { background: var(--gold); color: var(--ink); }
+
+  /* ── PAGE ── */
+  .page {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 24px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── HEADER ── */
+  .site-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 28px 0 0;
+    border-bottom: var(--border);
+    padding-bottom: 16px;
+    margin-bottom: 0;
+  }
+
+  .logo-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .logo-sun {
+    width: 28px; height: 28px;
+    background: var(--gold);
+    border: var(--border);
+    border-radius: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px;
+    box-shadow: 2px 2px 0 var(--ink);
+    flex-shrink: 0;
+  }
+
+  .logo-text {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-mid);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .header-tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    background: var(--gold-pale);
+    border: var(--border);
+    padding: 4px 10px;
+    box-shadow: 2px 2px 0 var(--ink);
+  }
+
+  /* ── SCREENS ── */
+  .screen {
+    display: none;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    padding: 48px 0 64px;
+    animation: fadeUp 0.35s ease both;
+  }
+  .screen.active { display: flex; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── EYEBROW ── */
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--olive);
+    margin-bottom: 0.875rem;
+    display: block;
+  }
+
+  /* ── HEADINGS ── */
+  h1 {
+    font-family: var(--serif);
+    font-size: clamp(2.4rem, 7vw, 3.8rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 1.25rem;
+  }
+  h1 em { font-style: italic; color: var(--rust); }
+
+  h2 {
+    font-family: var(--serif);
+    font-size: clamp(1.8rem, 5vw, 2.6rem);
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 0.75rem;
+  }
+  h2 em { font-style: italic; color: var(--rust); }
+
+  .lead {
+    font-family: var(--serif);
+    font-size: 1rem;
+    color: var(--ink-soft);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    max-width: 480px;
+  }
+
+  /* ── BUTTONS ── */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--gold);
+    color: var(--ink);
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 14px 24px;
+    border: var(--border);
+    cursor: pointer;
+    transition: all 0.15s ease;
+    text-decoration: none;
+    align-self: flex-start;
+    box-shadow: 4px 4px 0 var(--ink);
+    border-radius: 0;
+  }
+  .btn-primary:hover {
+    background: var(--gold-light);
+    box-shadow: 6px 6px 0 var(--ink);
+    transform: translate(-2px, -2px);
+  }
+  .btn-primary.full { width: 100%; justify-content: center; }
+
+  /* ── PROGRESS ── */
+  .progress {
+    display: flex;
+    gap: 0;
+    margin-bottom: 36px;
+    border: var(--border);
+    width: fit-content;
+    box-shadow: 3px 3px 0 var(--ink);
+  }
+  .progress-step {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-right: var(--border);
+    color: var(--ink-soft);
+    background: var(--cream-dark);
+    transition: all 0.2s;
+  }
+  .progress-step:last-child { border-right: none; }
+  .progress-step.active { background: var(--gold); color: var(--ink); font-weight: 700; }
+  .progress-step.done { background: var(--olive); color: var(--white); }
+
+  /* ── INDUSTRY CARDS ── */
+  .industry-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border: var(--border);
+    box-shadow: 4px 4px 0 var(--ink);
+    margin-bottom: 8px;
+  }
+
+  .industry-btn {
+    background: var(--white);
+    border: none;
+    border-right: var(--border);
+    border-bottom: var(--border);
+    padding: 22px 18px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    text-align: left;
+    color: var(--ink);
+    position: relative;
+  }
+  .industry-btn:nth-child(2) { border-right: none; }
+  .industry-btn:nth-child(3) { border-bottom: none; }
+  .industry-btn:nth-child(4) { border-right: none; border-bottom: none; }
+
+  .industry-btn:hover { background: var(--gold-pale); }
+
+  .industry-btn.selected {
+    background: var(--gold);
+  }
+  .industry-btn.selected .industry-label { color: var(--ink); }
+
+  .industry-emoji { font-size: 22px; margin-bottom: 10px; display: block; }
+
+  .industry-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink);
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  .industry-desc {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+  }
+
+  /* selected checkmark */
+  .industry-btn.selected::after {
+    content: '✓';
+    position: absolute;
+    top: 10px; right: 12px;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--ink);
+    font-weight: 700;
+  }
+
+  /* ── EMAIL SCREEN ── */
+  .selected-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--olive);
+    color: var(--white);
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border: var(--border);
+    box-shadow: 2px 2px 0 var(--ink);
+    margin-bottom: 22px;
+  }
+
+  .email-form { display: flex; flex-direction: column; gap: 10px; margin-top: 28px; }
+
+  .form-group { display: flex; flex-direction: column; gap: 5px; }
+  .form-group label {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  input[type="email"] {
+    background: var(--white);
+    border: var(--border);
+    border-radius: 0;
+    padding: 14px 16px;
+    font-family: var(--mono);
+    font-size: 0.88rem;
+    color: var(--ink);
+    outline: none;
+    transition: all 0.15s;
+    box-shadow: 3px 3px 0 var(--ink);
+    letter-spacing: 0.02em;
+    width: 100%;
+  }
+  input[type="email"]::placeholder { color: var(--ink-soft); opacity: 0.5; }
+  input[type="email"]:focus {
+    border-color: var(--rust);
+    box-shadow: 3px 3px 0 var(--rust);
+  }
+
+  .privacy-note {
+    font-family: var(--mono);
+    font-size: 9px;
+    color: var(--ink-soft);
+    letter-spacing: 0.08em;
+    margin-top: 4px;
+  }
+
+  /* ── RESULTS ── */
+  .results-header {
+    background: var(--ink);
+    border: var(--border);
+    padding: 24px;
+    margin-bottom: 0;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 5px 5px 0 var(--rust);
+  }
+
+  .results-tag {
+    font-family: var(--mono);
+    font-size: 9px;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .results-title {
+    font-family: var(--serif);
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+  .results-title em { font-style: italic; color: var(--gold); }
+
+  .win-card {
+    background: var(--white);
+    border: var(--border);
+    border-top: none;
+    padding: 18px 20px;
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    gap: 14px;
+    align-items: start;
+    transition: background 0.15s;
+  }
+  .win-card:hover { background: var(--gold-pale); }
+  .win-card:last-of-type { box-shadow: 3px 3px 0 var(--ink-mid); }
+
+  .win-num {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    font-weight: 700;
+    color: var(--rust);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding-top: 3px;
+  }
+
+  .win-title {
+    font-family: var(--serif);
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 5px;
+    line-height: 1.25;
+  }
+
+  .win-desc {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    color: var(--ink-soft);
+    line-height: 1.7;
+    letter-spacing: 0.01em;
+  }
+
+  /* PDF CTA */
+  .pdf-cta {
+    background: var(--gold);
+    border: var(--border);
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 24px 0 0;
+    text-decoration: none;
+    transition: all 0.15s;
+    box-shadow: 4px 4px 0 var(--ink);
+    cursor: pointer;
+  }
+  .pdf-cta:hover {
+    background: var(--gold-light);
+    box-shadow: 6px 6px 0 var(--ink);
+    transform: translate(-2px, -2px);
+  }
+
+  .pdf-icon {
+    width: 40px; height: 40px;
+    background: var(--ink);
+    border: var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .pdf-label {
+    font-family: var(--mono);
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--ink-soft);
+    margin-bottom: 3px;
+  }
+
+  .pdf-name {
+    font-family: var(--serif);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  /* ── DIVIDER ── */
+  .section-divider {
+    border: none;
+    border-top: var(--border);
+    margin: 28px 0;
+  }
+
+  /* ── FOOTER ── */
+  .follow-strip {
+    border-top: var(--border);
+    padding: 20px 0 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .follow-left {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--ink-soft);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .follow-links { display: flex; gap: 12px; }
+  .follow-links a {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--ink);
+    text-decoration: none;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-bottom: 2px solid var(--rust);
+    padding-bottom: 1px;
+    transition: color 0.15s;
+  }
+  .follow-links a:hover { color: var(--rust); }
+
+  /* ── LOADING ── */
+  .loading-screen {
+    display: none;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+  .loading-screen.active { display: flex; }
+
+  .loading-box {
+    border: var(--border);
+    background: var(--white);
+    padding: 32px 40px;
+    text-align: center;
+    box-shadow: 5px 5px 0 var(--ink);
+  }
+
+  .loading-bar-wrap {
+    width: 180px; height: 4px;
+    background: var(--cream-dark);
+    border: 1px solid var(--ink);
+    margin: 0 auto 16px;
+    overflow: hidden;
+  }
+  .loading-bar {
+    height: 100%;
+    background: var(--rust);
+    animation: loadBar 1.2s ease-in-out infinite;
+    width: 40%;
+  }
+  @keyframes loadBar {
+    0%   { transform: translateX(-100%); }
+    100% { transform: translateX(500%); }
+  }
+
+  .loading-text {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--ink-soft);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 480px) {
+    .industry-grid { grid-template-columns: 1fr 1fr; }
+    .industry-btn { padding: 16px 14px; }
+    .progress-step { padding: 5px 10px; }
+    h1 { font-size: 2rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="logo-wrap">
+      <div class="logo-sun">☀</div>
+      <span class="logo-text">Sunnyside Ops</span>
+    </div>
+    <div class="header-tag">Free Quiz</div>
+  </header>
+
+  <!-- ══ SCREEN 1: HERO ══ -->
+  <div class="screen active" id="screen-hero">
+    <div class="progress">
+      <div class="progress-step active">01 — Start</div>
+      <div class="progress-step">02 — Your Biz</div>
+      <div class="progress-step">03 — Results</div>
+    </div>
+
+    <span class="eyebrow">60-second quiz</span>
+    <h1>What should you<br>automate <em>first?</em></h1>
+    <p class="lead">Answer one question. Get 3 personalized automations that'll actually save you time — based on your type of business. Free, no fluff.</p>
+    <button class="btn-primary" onclick="goTo('screen-quiz')">
+      Let's find out →
+    </button>
+  </div>
+
+  <!-- ══ SCREEN 2: QUIZ ══ -->
+  <div class="screen" id="screen-quiz">
+    <div class="progress">
+      <div class="progress-step done">01 — Start</div>
+      <div class="progress-step active">02 — Your Biz</div>
+      <div class="progress-step">03 — Results</div>
+    </div>
+
+    <span class="eyebrow">Question 1 of 1</span>
+    <h2>What kind of business<br>do you <em>run?</em></h2>
+    <p class="lead" style="margin-bottom:1.5rem;">Pick the one that fits best — no wrong answers.</p>
+
+    <div class="industry-grid">
+      <button class="industry-btn" onclick="selectIndustry('trades', this)">
+        <span class="industry-emoji">🔧</span>
+        <span class="industry-label">Trades</span>
+        <span class="industry-desc">Contractor, HVAC,<br>plumber, electrician</span>
+      </button>
+      <button class="industry-btn" onclick="selectIndustry('ecommerce', this)">
+        <span class="industry-emoji">🛒</span>
+        <span class="industry-label">E-Commerce</span>
+        <span class="industry-desc">Shopify, product-based,<br>online store</span>
+      </button>
+      <button class="industry-btn" onclick="selectIndustry('service', this)">
+        <span class="industry-emoji">🤝</span>
+        <span class="industry-label">Service Biz</span>
+        <span class="industry-desc">Coach, agency,<br>freelancer, VA</span>
+      </button>
+      <button class="industry-btn" onclick="selectIndustry('other', this)">
+        <span class="industry-emoji">🙋</span>
+        <span class="industry-label">Other</span>
+        <span class="industry-desc">Something else<br>or not sure yet</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- ══ SCREEN 3: EMAIL ══ -->
+  <div class="screen" id="screen-email">
+    <div class="progress">
+      <div class="progress-step done">01 — Start</div>
+      <div class="progress-step done">02 — Your Biz</div>
+      <div class="progress-step active">03 — Results</div>
+    </div>
+
+    <div class="selected-badge">
+      ✓ &nbsp;<span id="industry-badge">Industry selected</span>
+    </div>
+
+    <h2>Where should I send<br>your <em>results?</em></h2>
+    <p class="lead" style="margin-bottom:0">Drop your email — I'll show your 3 quick wins right here, and send the full PDF breakdown to your inbox.</p>
+
+    <div class="email-form">
+      <div class="form-group">
+        <label>Your email address</label>
+        <input type="email" id="email-input" placeholder="you@yourbusiness.com" />
+      </div>
+      <button class="btn-primary full" onclick="submitEmail()">
+        Show me my results →
+      </button>
+      <p class="privacy-note">// no spam, ever. unsubscribe anytime.</p>
+    </div>
+  </div>
+
+  <!-- ══ LOADING ══ -->
+  <div class="loading-screen" id="screen-loading">
+    <div class="loading-box">
+      <div class="loading-bar-wrap"><div class="loading-bar"></div></div>
+      <div class="loading-text">Building your results...</div>
+    </div>
+  </div>
+
+  <!-- ══ SCREEN 4: RESULTS ══ -->
+  <div class="screen" id="screen-results">
+    <div id="results-content"></div>
+    <hr class="section-divider">
+    <div class="follow-strip">
+      <span class="follow-left">Built by Christin @ Sunnyside Ops</span>
+      <div class="follow-links">
+        <a href="https://instagram.com/sunnysideopshq" target="_blank">@sunnysideopshq</a>
+        <a href="https://sunnysideops.io" target="_blank">sunnysideops.io</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  let selectedIndustry = null;
+
+  const industryData = {
+    trades: {
+      headline: 'Your 3 quick wins —',
+      sub: 'built for trades',
+      wins: [
+        { title: 'Lead Follow-Up Texts Within 5 Minutes', desc: 'When someone fills out your contact form, they should get a text immediately. Whoever responds first usually gets the job. Set up an auto-text and stop losing work to slower competitors.' },
+        { title: 'Estimate Reminder Sequences', desc: 'Stop chasing people manually. A 2-step automated reminder — 24hrs and 72hrs after sending a quote — closes more jobs with zero awkwardness on your end.' },
+        { title: 'Automatic Review Requests After Every Job', desc: 'Happy customers don\'t leave reviews because nobody asked at the right moment. An auto-text 24hrs after job completion with a direct Google review link = more 5-stars on autopilot.' }
+      ],
+      pdf: 'sunnyside_trades_automation.pdf',
+      pdfLabel: 'Trades Automation Breakdown'
+    },
+    ecommerce: {
+      headline: 'Your 3 quick wins —',
+      sub: 'built for e-commerce',
+      wins: [
+        { title: 'Abandoned Cart Recovery Sequence', desc: 'Someone added your product and left — that\'s not a lost sale, it\'s a warm lead. A 3-email sequence (1hr, 24hr, 72hr) recovers 5–15% of those carts. Completely automatic.' },
+        { title: 'Post-Purchase Review + Upsell Flow', desc: 'After someone buys: thank you → review request at day 5 → "you might also like" at day 10. Builds loyalty, social proof, and repeat revenue simultaneously.' },
+        { title: 'Low Stock + Back-in-Stock Alerts', desc: 'Get notified when inventory dips so you can reorder in time, and automatically email customers when a sold-out item is back. No more missed sales from stockouts.' }
+      ],
+      pdf: 'sunnyside_ecommerce_automation.pdf',
+      pdfLabel: 'E-Commerce Automation Breakdown'
+    },
+    service: {
+      headline: 'Your 3 quick wins —',
+      sub: 'built for service pros',
+      wins: [
+        { title: 'Inquiry → Onboarding on Autopilot', desc: 'From contact form to welcome email, contract, and booking link — your entire onboarding runs itself. No manual handoff, no dropped balls, and you look incredibly professional from day one.' },
+        { title: 'Ghost-Lead Follow-Up Sequence', desc: 'A 3-touch automated sequence: check-in at 48hrs, gentle nudge at 5 days, final "closing the loop" at 10 days. Closes more deals without a single awkward follow-up email.' },
+        { title: 'Automated Client Check-In Messages', desc: 'Mid-project and end-of-project check-ins sent automatically = happier clients and more referrals. Takes 30 minutes to set up, pays off with every single client forever.' }
+      ],
+      pdf: 'sunnyside_service_automation.pdf',
+      pdfLabel: 'Service Biz Automation Breakdown'
+    },
+    other: {
+      headline: 'Your 3 quick wins —',
+      sub: 'universally useful',
+      wins: [
+        { title: 'Instant Inquiry Auto-Responses', desc: 'Any time someone reaches out, they should hear back immediately — even at 11pm. A warm, human-sounding auto-reply builds trust from the very first interaction.' },
+        { title: 'Canned Responses for Repeat Emails', desc: 'If you\'re typing the same email more than twice a week, it should be automated. Smart templates + triggers = same personal touch, a fraction of the time.' },
+        { title: 'Automated Weekly Task Reminders', desc: 'Get the recurring tasks out of your head and into an automated system. A weekly digest means nothing falls through the cracks, even when life gets busy.' }
+      ],
+      pdf: 'sunnyside_universal_automation.pdf',
+      pdfLabel: 'Universal Automation Breakdown'
+    }
+  };
+
+  function goTo(screenId) {
+    document.querySelectorAll('.screen, .loading-screen').forEach(s => s.classList.remove('active'));
+    const target = document.getElementById(screenId);
+    target.classList.add('active');
+    target.style.animation = 'none';
+    target.offsetHeight;
+    target.style.animation = '';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function selectIndustry(industry, btn) {
+    selectedIndustry = industry;
+    document.querySelectorAll('.industry-btn').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    const labels = {
+      trades: '🔧 Trades selected',
+      ecommerce: '🛒 E-Commerce selected',
+      service: '🤝 Service Biz selected',
+      other: '🙋 Other selected'
+    };
+    document.getElementById('industry-badge').textContent = labels[industry];
+    setTimeout(() => goTo('screen-email'), 300);
+  }
+
+  function submitEmail() {
+    const email = document.getElementById('email-input').value.trim();
+    const input = document.getElementById('email-input');
+    if (!email || !email.includes('@')) {
+      input.style.borderColor = '#ad360b';
+      input.style.boxShadow = '3px 3px 0 #ad360b';
+      input.focus();
+      setTimeout(() => {
+        input.style.borderColor = '';
+        input.style.boxShadow = '';
+      }, 1400);
+      return;
+    }
+    goTo('screen-loading');
+    setTimeout(() => {
+      buildResults();
+      goTo('screen-results');
+    }, 1400);
+
+    fetch('https://formspree.io/f/xdaypaod', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, industry: selectedIndustry })
+    });
+  }
+
+  function buildResults() {
+    const data = industryData[selectedIndustry || 'other'];
+    document.getElementById('results-content').innerHTML = `
+      <div class="results-header">
+        <span class="results-tag">✦ your personalized results</span>
+        <div class="results-title">${data.headline} <em>${data.sub}</em></div>
+      </div>
+      ${data.wins.map((w, i) => `
+        <div class="win-card">
+          <div class="win-num">0${i+1}</div>
+          <div>
+            <div class="win-title">${w.title}</div>
+            <div class="win-desc">${w.desc}</div>
+          </div>
+        </div>
+      `).join('')}
+      <a class="pdf-cta" href="${data.pdf}" download>
+        <div class="pdf-icon">📄</div>
+        <div>
+          <div class="pdf-label">// free download</div>
+          <div class="pdf-name">${data.pdfLabel} →</div>
+        </div>
+      </a>
+      <p style="font-family:var(--mono); font-size:10px; color:var(--ink-soft); letter-spacing:0.08em; margin-top:14px;">
+        // full PDF breakdown sent to your inbox too. check your email. 🌞
+      </p>
+    `;
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('email-input').addEventListener('keydown', e => {
+      if (e.key === 'Enter') submitEmail();
+    });
+  });
+</script>
+</body>
+</html>
