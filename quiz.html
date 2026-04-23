@@ -808,7 +808,10 @@
         body: JSON.stringify({
           api_key: '0ZuVbP_segnGbC1bZxlu9g',
           email: email,
-          tags: [tag]
+          tags: [tag],
+          fields: {
+            industry: selectedIndustry || 'other'
+          }
         })
       });
     } catch(e) {
