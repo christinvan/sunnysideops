@@ -802,15 +802,13 @@
     const tag = tags[selectedIndustry || 'other'];
 
     try {
-      // Subscribe to Kit form
+      const formData = new FormData();
+      formData.append('email_address', email);
+      formData.append('api_key', '0ZuVbP_segnGbC1bZxlu9g');
+      formData.append('tags[]', tag);
       await fetch('https://app.kit.com/forms/9358312/subscriptions', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          api_key: '0ZuVbP_segnGbC1bZxlu9g',
-          email_address: email,
-          tags: [tag]
-        })
+        body: formData
       });
     } catch(e) {
       console.log('Kit error:', e);
