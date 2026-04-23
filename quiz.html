@@ -831,8 +831,24 @@
   }
 
   document.addEventListener('DOMContentLoaded', () => {
-    // Kit handles submission + redirects to results.html?industry=INDUSTRY
-    // The redirect URL is set per-industry when they select their industry
+    // Watch for Kit's success message then inject the results button
+    const observer = new MutationObserver(function() {
+      const successMsg = document.querySelector('[data-element="success"], .formkit-alert-success');
+      const alreadyAdded = document.getElementById('results-btn');
+      if (successMsg && !alreadyAdded) {
+        const btn = document.createElement('button');
+        btn.id = 'results-btn';
+        btn.className = 'btn-primary full';
+        btn.style.marginTop = '16px';
+        btn.innerText = 'Take me to my results →';
+        btn.onclick = function() {
+          buildResults();
+          goTo('screen-results');
+        };
+        successMsg.parentNode.insertBefore(btn, successMsg.nextSibling);
+      }
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
   });
 </script>
 </body>
