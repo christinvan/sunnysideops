@@ -747,40 +747,7 @@
       other: '🙋 Other selected'
     };
     document.getElementById('industry-badge').textContent = labels[industry];
-    // Set the Kit tag based on industry selection
-    const tags = {
-      trades: 'quiz-trades',
-      ecommerce: 'quiz-ecommerce',
-      service: 'quiz-service',
-      other: 'quiz-other'
-    };
-    document.getElementById('kit-tag-field').value = tags[industry];
-
-    // Store industry for redirect URL (Kit will redirect to results.html?industry=X)
-    // We update a hidden input that Kit's redirect can use via the URL
-    document.getElementById('kit-industry-field').value = industry;
-
     setTimeout(() => goTo('screen-email'), 300);
-  }
-
-  function submitEmail() {
-    const email = document.getElementById('email-input').value.trim();
-    const input = document.getElementById('email-input');
-    if (!email || !email.includes('@')) {
-      input.style.borderColor = '#ad360b';
-      input.style.boxShadow = '3px 3px 0 #ad360b';
-      input.focus();
-      setTimeout(() => {
-        input.style.borderColor = '';
-        input.style.boxShadow = '';
-      }, 1400);
-      return;
-    }
-    goTo('screen-loading');
-    setTimeout(() => {
-      buildResults();
-      goTo('screen-results');
-    }, 1400);
   }
 
   function buildResults() {
