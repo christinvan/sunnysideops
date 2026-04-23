@@ -802,13 +802,14 @@
     const tag = tags[selectedIndustry || 'other'];
 
     try {
-      const formData = new FormData();
-      formData.append('email_address', email);
-      formData.append('api_key', '0ZuVbP_segnGbC1bZxlu9g');
-      formData.append('tags[]', tag);
-      await fetch('https://app.kit.com/forms/9358312/subscriptions', {
+      await fetch('https://api.convertkit.com/v3/forms/9358312/subscribe', {
         method: 'POST',
-        body: formData
+        headers: { 'Content-Type': 'application/json; charset=utf-8' },
+        body: JSON.stringify({
+          api_key: '0ZuVbP_segnGbC1bZxlu9g',
+          email: email,
+          tags: [tag]
+        })
       });
     } catch(e) {
       console.log('Kit error:', e);
