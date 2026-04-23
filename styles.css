@@ -2,7 +2,7 @@
    SUNNYSIDE OPS — Solarpunk Retro-Web v4
    ============================================= */
 
-@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Epilogue:wght@400;600;700;800;900&display=swap');
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -27,9 +27,9 @@
   --ink-soft:    #6b6040;
   --white:       #fdfaf4;
 
-  --serif: 'Syne', system-ui, sans-serif;
+  --serif: 'Epilogue', system-ui, sans-serif;
   --mono:  'Space Mono', monospace;
-  --sans:  'Syne', system-ui, sans-serif;
+  --sans:  'Epilogue', system-ui, sans-serif;
 
   --border: 2px solid var(--ink);
   --border-thin: 1.5px solid var(--ink);
@@ -68,7 +68,7 @@ h1, h2 {
   line-height: 1.05;
   color: var(--ink);
   font-weight: 800;
-  letter-spacing: -0.02em;
+  letter-spacing: 0.02em;
 }
 h1 { font-size: clamp(2.8rem, 6vw, 5rem); }
 h2 { font-size: clamp(2rem, 4vw, 3.2rem); }
@@ -77,7 +77,7 @@ h3 {
   font-size: 1.2rem;
   font-weight: 700;
   line-height: 1.2;
-  letter-spacing: -0.01em;
+  letter-spacing: 0em;
 }
 em { font-style: italic; color: var(--gold); }
 p  { color: var(--ink-mid); line-height: 1.8; font-size: 1rem; }
@@ -345,7 +345,7 @@ p.hero-title {
   font-weight: 800;
   line-height: 1.05;
   color: var(--ink);
-  letter-spacing: -0.03em;
+  letter-spacing: 0.01em;
   margin: 0.5rem 0 1.5rem;
 }
 
@@ -648,7 +648,7 @@ p.hero-title {
   font-weight: 700;
   color: var(--white);
   margin-bottom: 0.15rem;
-  letter-spacing: -0.01em;
+  letter-spacing: 0.01em;
 }
 .footer-tag {
   font-family: var(--mono);
@@ -692,7 +692,7 @@ p.hero-title {
   font-size: clamp(2rem, 5vw, 3.5rem);
   font-weight: 800;
   margin-bottom: 1rem;
-  letter-spacing: -0.02em;
+  letter-spacing: 0.01em;
 }
 .portfolio-subtitle {
   font-family: var(--mono);
@@ -727,7 +727,7 @@ p.hero-title {
   padding-bottom: 1.25rem;
   border-bottom: var(--border-thin);
 }
-.case-study-header h2 { font-size: 1.6rem; font-weight: 800; margin: 0; letter-spacing: -0.02em; }
+.case-study-header h2 { font-size: 1.6rem; font-weight: 800; margin: 0; letter-spacing: 0.01em; }
 .case-study-tag {
   font-family: var(--mono);
   font-size: 0.62rem;
@@ -877,7 +877,7 @@ p.hero-title {
 
 @media (max-width: 640px) {
   .mobile-toggle { display: flex; }
-  p.hero-title { font-size: 1.75rem; letter-spacing: -0.02em; }
+  p.hero-title { font-size: 1.75rem; letter-spacing: 0.01em; }
   .nav-menu {
     display: none;
     position: absolute;
