@@ -830,25 +830,52 @@
     `;
   }
 
+  async function submitEmail() {
+    const email = document.getElementById('email-input').value.trim();
+    const errorEl = document.getElementById('email-error');
+
+    if (!email || !email.includes('@')) {
+      errorEl.style.display = 'block';
+      document.getElementById('email-input').focus();
+      return;
+    }
+
+    errorEl.style.display = 'none';
+    goTo('screen-loading');
+
+    // Set tag based on selected industry
+    const tags = {
+      trades: 'quiz-trades',
+      ecommerce: 'quiz-ecommerce',
+      service: 'quiz-service',
+      other: 'quiz-other'
+    };
+    const tag = tags[selectedIndustry || 'other'];
+
+    try {
+      // Subscribe to Kit form
+      await fetch('https://app.kit.com/forms/9358312/subscriptions', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          api_key: '0ZuVbP_segnGbC1bZxlu9g',
+          email_address: email,
+          tags: [tag]
+        })
+      });
+    } catch(e) {
+      console.log('Kit error:', e);
+    }
+
+    // Always show results regardless of API response
+    buildResults();
+    goTo('screen-results');
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
-    // Watch for Kit's success message then inject the results button
-    const observer = new MutationObserver(function() {
-      const successMsg = document.querySelector('[data-element="success"], .formkit-alert-success');
-      const alreadyAdded = document.getElementById('results-btn');
-      if (successMsg && !alreadyAdded) {
-        const btn = document.createElement('button');
-        btn.id = 'results-btn';
-        btn.className = 'btn-primary full';
-        btn.style.marginTop = '16px';
-        btn.innerText = 'Take me to my results →';
-        btn.onclick = function() {
-          buildResults();
-          goTo('screen-results');
-        };
-        successMsg.parentNode.insertBefore(btn, successMsg.nextSibling);
-      }
+    document.getElementById('email-input').addEventListener('keydown', e => {
+      if (e.key === 'Enter') submitEmail();
     });
-    observer.observe(document.body, { childList: true, subtree: true });
   });
 </script>
 </body>
