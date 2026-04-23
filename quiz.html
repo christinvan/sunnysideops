@@ -650,6 +650,7 @@
               <input class="formkit-input" name="email_address" aria-label="Email Address" placeholder="your@email.com" required="" type="email" style="color:#1a1408; border:2px solid #1a1408; border-radius:0; font-family:'Space Mono',monospace; font-size:13px; padding:14px 16px; width:100%; box-shadow:3px 3px 0 #1a1408;">
             </div>
             <input type="hidden" name="tags" id="kit-tag-field" value="">
+            <input type="hidden" name="fields[industry]" id="kit-industry-field" value="">
             <button data-element="submit" class="formkit-submit" style="background:#7b700b; color:#fff; border:2px solid #1a1408; border-radius:0; font-family:'Space Mono',monospace; font-size:12px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; padding:14px 24px; width:100%; cursor:pointer; box-shadow:4px 4px 0 #1a1408; margin-top:10px;">
               <div class="formkit-spinner"><div></div><div></div><div></div></div>
               <span>Send me my results →</span>
@@ -772,6 +773,11 @@
       other: 'quiz-other'
     };
     document.getElementById('kit-tag-field').value = tags[industry];
+
+    // Store industry for redirect URL (Kit will redirect to results.html?industry=X)
+    // We update a hidden input that Kit's redirect can use via the URL
+    document.getElementById('kit-industry-field').value = industry;
+
     setTimeout(() => goTo('screen-email'), 300);
   }
 
@@ -825,9 +831,8 @@
   }
 
   document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('email-input').addEventListener('keydown', e => {
-      if (e.key === 'Enter') submitEmail();
-    });
+    // Kit handles submission + redirects to results.html?industry=INDUSTRY
+    // The redirect URL is set per-industry when they select their industry
   });
 </script>
 </body>
